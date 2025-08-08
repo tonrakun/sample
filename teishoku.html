@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炙り家 嵐山 - 京都の隠れ家創作和食</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        .font-serif-jp { font-family: 'Noto Serif JP', serif; }
+        .font-gothic { font-family: 'Zen Kaku Gothic New', sans-serif; }
+        
+        /* スムーススクロール */
+        html { scroll-behavior: smooth; }
+        
+        /* カスタムグラデーション */
+        .gradient-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4E4C1 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* パララックス効果 */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* ホバーエフェクト */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        /* ローディングアニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-gothic overflow-x-hidden">
+    
+    <!-- ナビゲーション -->
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <div class="font-serif-jp text-2xl font-bold gradient-gold">
+                    炙り家 嵐山
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#concept" class="hover:text-yellow-400 transition-colors">コンセプト</a>
+                    <a href="#menu" class="hover:text-yellow-400 transition-colors">お品書き</a>
+                    <a href="#course" class="hover:text-yellow-400 transition-colors">コース</a>
+                    <a href="#access" class="hover:text-yellow-400 transition-colors">アクセス</a>
+                    <a href="#reservation" class="bg-yellow-600 hover:bg-yellow-500 px-6 py-2 rounded-full transition-all">
+                        ご予約
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
+            <a href="#concept" class="hover:text-yellow-400">コンセプト</a>
+            <a href="#menu" class="hover:text-yellow-400">お品書き</a>
+            <a href="#course" class="hover:text-yellow-400">コース</a>
+            <a href="#access" class="hover:text-yellow-400">アクセス</a>
+            <a href="#reservation" class="bg-yellow-600 px-8 py-3 rounded-full">ご予約</a>
+        </div>
+    </div>
+    
+    <!-- ヒーローセクション -->
+    <section class="relative h-screen flex items-center justify-center parallax" 
+             style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=2000');">
+        <div class="text-center px-4" data-aos="fade-up">
+            <h1 class="font-serif-jp text-5xl md:text-7xl font-bold mb-6">
+                京都嵐山で味わう
+                <br>
+                <span class="gradient-gold">極上の創作和食</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300">
+                四季折々の食材を、炭火で丁寧に炙り上げる
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#reservation" class="bg-yellow-600 hover:bg-yellow-500 px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105">
+                    <i class="fas fa-calendar-check mr-2"></i>席を予約する
+                </a>
+                <a href="#menu" class="border-2 border-white hover:bg-white hover:text-black px-8 py-4 rounded-full text-lg font-bold transition-all">
+                    <i class="fas fa-utensils mr-2"></i>メニューを見る
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-3xl text-yellow-400"></i>
+        </div>
+    </section>
+    
+    <!-- コンセプト -->
+    <section id="concept" class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="font-serif-jp text-4xl md:text-5xl font-bold mb-6">
+                        炭火が紡ぐ<br>
+                        <span class="gradient-gold">至福のひととき</span>
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        京都嵐山の静寂な佇まいの中、厳選された旬の食材を備長炭でじっくりと炙り上げます。
+                        素材本来の旨みを最大限に引き出し、五感で愉しむ創作和食をご提供いたします。
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        大切な方との特別な時間を、心を込めたおもてなしで彩ります。
+                    </p>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1000" 
+                         alt="料理" 
+                         class="rounded-2xl shadow-2xl hover-lift">
+                    <div class="absolute -bottom-6 -right-6 bg-yellow-600 text-black p-6 rounded-2xl font-bold">
+                        <div class="text-3xl">創業15年</div>
+                        <div>ミシュラン一つ星</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- シグネチャーメニュー -->
+    <section id="menu" class="py-20 bg-gray-900">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="font-serif-jp text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-gold">極上のお品書き</span>
+                </h2>
+                <p class="text-gray-400">当店自慢の逸品をご紹介</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- メニューアイテム1 -->
+                <div class="bg-black rounded-2xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=800" 
+                         alt="黒毛和牛の炭火焼き" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-serif-jp text-xl font-bold mb-2">黒毛和牛の炭火焼き</h3>
+                        <p class="text-gray-400 text-sm mb-4">A5ランクの黒毛和牛を備長炭で丁寧に焼き上げました</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-yellow-400 font-bold text-xl">¥8,800</span>
+                            <span class="text-xs bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full">人気No.1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- メニューアイテム2 -->
+                <div class="bg-black rounded-2xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=800" 
+                         alt="旬魚の炙り寿司" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-serif-jp text-xl font-bold mb-2">旬魚の炙り寿司</h3>
+                        <p class="text-gray-400 text-sm mb-4">その日仕入れた新鮮な魚を炙り、香ばしさをプラス</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-yellow-400 font-bold text-xl">¥6,600</span>
+                            <span class="text-xs bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full">季節限定</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- メニューアイテム3 -->
+                <div class="bg-black rounded-2xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=800" 
+                         alt="京野菜の炭火焼き" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-serif-jp text-xl font-bold mb-2">京野菜の炭火焼き</h3>
+                        <p class="text-gray-400 text-sm mb-4">京都の契約農家から届く新鮮野菜を炭火で</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-yellow-400 font-bold text-xl">¥3,300</span>
+                            <span class="text-xs bg-green-600/20 text-green-400 px-3 py-1 rounded-full">ヘルシー</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- コース料理 -->
+    <section id="course" class="py-20">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="font-serif-jp text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-gold">おまかせコース</span>
+                </h2>
+                <p class="text-gray-400">特別な日のための贅沢なひととき</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 雅コース -->
+                <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-yellow-600/30" data-aos="fade-right">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="font-serif-jp text-2xl font-bold">雅 -MIYABI-</h3>
+                        <span class="text-3xl font-bold text-yellow-400">¥12,000</span>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-400 mt-1 mr-3"></i>
+                            <span>季節の前菜三種盛り</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-400 mt-1 mr-3"></i>
+                            <span>本日の鮮魚お造り</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-400 mt-1 mr-3"></i>
+                            <span>黒毛和牛の炭火焼き</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-400 mt-1 mr-3"></i>
+                            <span>季節の炊き込みご飯</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-400 mt-1 mr-3"></i>
+                            <span>自家製デザート</span>
+                        </li>
+                    </ul>
+                    <button class="w-full mt-6 bg-yellow-600 hover:bg-yellow-500 py-3 rounded-full font-bold transition-all">
+                        このコースを予約
+                    </button>
+                </div>
+                
+                <!-- 極コース -->
+                <div class="bg-gradient-to-br from-yellow-900/20 to-black rounded-2xl p-8 border border-yellow-400" data-aos="fade-left">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="font-serif-jp text-2xl font-bold">極 -KIWAMI-</h3>
+                        <span class="text-3xl font-bold text-yellow-400">¥18,000</span>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-yellow-400 mt-1 mr-3"></i>
+                            <span>季節の前菜五種盛り</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-yellow-400 mt-1 mr-3"></i>
+                            <span>特選鮮魚お造り盛り合わせ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-yellow-400 mt-1 mr-3"></i>
+                            <span>のどぐろの炭火焼き</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-yellow-400 mt-1 mr-3"></i>
+                            <span>特選黒毛和牛サーロイン</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-yellow-400 mt-1 mr-3"></i>
+                            <span>土鍋炊き込みご飯</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-yellow-400 mt-1 mr-3"></i>
+                            <span>季節のデザート二種</span>
+                        </li>
+                    </ul>
+                    <button class="w-full mt-6 bg-yellow-400 hover:bg-yellow-300 text-black py-3 rounded-full font-bold transition-all">
+                        このコースを予約
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- アクセス -->
+    <section id="access" class="py-20 bg-gray-900">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="font-serif-jp text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-gold">アクセス</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <div class="bg-black rounded-2xl p-8">
+                        <h3 class="font-serif-jp text-2xl font-bold mb-6">店舗情報</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-yellow-400 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-bold">住所</p>
+                                    <p class="text-gray-400">〒616-8385 京都府京都市右京区嵐山天龍寺芒ノ馬場町</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-train text-yellow-400 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-bold">アクセス</p>
+                                    <p class="text-gray-400">嵐電嵐山駅より徒歩5分<br>JR嵯峨嵐山駅より徒歩10分</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-yellow-400 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-bold">営業時間</p>
+                                    <p class="text-gray-400">ランチ 11:30-14:30 (L.O. 14:00)<br>ディナー 17:30-22:00 (L.O. 21:00)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-calendar text-yellow-400 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-bold">定休日</p>
+                                    <p class="text-gray-400">水曜日（祝日の場合は営業）</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-yellow-400 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-bold">電話番号</p>
+                                    <p class="text-gray-400">075-123-4567</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="bg-black rounded-2xl overflow-hidden h-full">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3267.7169684686626!2d135.67084931523837!3d35.01387998035471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001075451958d3f%3A0x33669932c5510!2sArashiyama!5e0!3m2!1sen!2sjp!4v1234567890"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height: 400px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 予約セクション -->
+    <section id="reservation" class="py-20">
+        <div class="container mx-auto max-w-4xl px-4">
+            <div class="bg-gradient-to-br from-yellow-900/30 to-black rounded-3xl p-8 md:p-12 border border-yellow-600/30" data-aos="fade-up">
+                <div class="text-center mb-8">
+                    <h2 class="font-serif-jp text-4xl md:text-5xl font-bold mb-4">
+                        <span class="gradient-gold">ご予約</span>
+                    </h2>
+                    <p class="text-gray-400">お電話またはオンラインでご予約を承っております</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <a href="tel:075-123-4567" class="bg-black hover:bg-gray-900 rounded-2xl p-6 text-center transition-all hover-lift">
+                        <i class="fas fa-phone-alt text-4xl text-yellow-400 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">お電話でのご予約</h3>
+                        <p class="text-3xl font-bold text-yellow-400 mb-2">075-123-4567</p>
+                        <p class="text-sm text-gray-400">受付時間: 10:00-20:00</p>
+                    </a>
+                    
+                    <button class="bg-yellow-600 hover:bg-yellow-500 rounded-2xl p-6 text-center transition-all hover-lift">
+                        <i class="fas fa-laptop text-4xl mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">オンライン予約</h3>
+                        <p class="text-lg mb-2">24時間受付中</p>
+                        <p class="text-sm">空席確認・即時予約可能</p>
+                    </button>
+                </div>
+                
+                <div class="mt-8 p-4 bg-yellow-600/10 rounded-xl border border-yellow-600/30">
+                    <p class="text-center text-sm text-yellow-400">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        キャンセルは前日までにお願いいたします
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- フッター -->
+    <footer class="bg-black border-t border-gray-800 py-12">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-serif-jp text-2xl font-bold gradient-gold mb-4">炙り家 嵐山</h3>
+                    <p class="text-gray-400 text-sm">京都の伝統と革新が融合する創作和食</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">営業時間</h4>
+                    <p class="text-gray-400 text-sm">
+                        ランチ: 11:30-14:30<br>
+                        ディナー: 17:30-22:00<br>
+                        定休日: 水曜日
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">フォローする</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 text-2xl transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 text-2xl transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 text-2xl transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 炙り家 嵐山. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS初期化
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // モバイルメニュー
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+        
+        mobileMenuButton.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuButton.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // モバイルメニューのリンククリックで閉じる
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+                isMenuOpen = false;
+            });
+        });
+        
+        // スクロール時のナビゲーション背景
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+        
+        // パララックス効果の強化
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.parallax');
+            parallax.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+        });
+    </script>
+</body>
+</html>
