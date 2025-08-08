@@ -3,274 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>とんこつらーめん - 作品サンプルサイト</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>とんこつらーめん - Portfolio</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        .font-serif-jp { font-family: 'Noto Serif JP', serif; }
-        .font-gothic { font-family: 'Zen Kaku Gothic New', sans-serif; }
-        .font-inter { font-family: 'Inter', sans-serif; }
-        
-        html { scroll-behavior: smooth; }
-        
-        .gradient-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .gradient-accent {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
-        }
-        
-        .bg-gradient-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .bg-gradient-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white font-inter">
-    
-    <!-- ナビゲーション -->
-    <nav class="fixed top-0 w-full bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-700">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="font-bold text-xl gradient-primary">
-                    とんこつらーめん
-                </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                    <a href="#portfolio" class="hover:text-blue-400 transition-colors">Portfolio</a>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden text-xl">
-                    <i class="fas fa-bars"></i>
-                </button>
+<body>
+    <!-- アイランド型ナビゲーション -->
+    <div class="nav-container">
+        <nav>
+            <div class="logo">とんこつらーめん</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
             </div>
-        </div>
-    </nav>
-    
-    <!-- モバイルメニュー -->
-    <div id="mobile-menu" class="fixed inset-0 bg-gray-900/95 z-40 hidden">
-        <div class="flex flex-col items-center justify-center h-full space-y-6 text-xl">
-            <a href="#about" class="hover:text-blue-400">About</a>
-            <a href="#portfolio" class="hover:text-blue-400">Portfolio</a>
-            <a href="#contact" class="hover:text-blue-400">Contact</a>
-        </div>
+        </nav>
     </div>
-    
+
     <!-- ヒーローセクション -->
-    <section class="relative min-h-screen flex items-center justify-center bg-gradient-hero">
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="relative z-10 text-center px-4" data-aos="fade-up">
-            <div class="float-animation mb-8">
-                <i class="fas fa-code text-6xl md:text-8xl text-white/80"></i>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                格安で美しいWebサイト制作
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 text-white/80 max-w-2xl mx-auto">
-                美しくて使いやすいWebサイトを制作しています。<br>
-                作品サンプルをご覧ください。
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#portfolio" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105">
-                    <i class="fas fa-eye mr-2"></i>作品を見る
-                </a>
-            </div>
-        </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-3xl text-white/60"></i>
+    <section class="hero">
+        <h1>フロントエンド・バックエンド<br>エンジニア</h1>
+        <p class="subtitle">美しくて使いやすいWebサイトを制作しています</p>
+        <p class="description">
+            ユーザー体験を重視したWebサイト制作を行っています。
+            HTML、CSS、JavaScriptを駆使し、モダンなデザインと機能性を両立させた作品を作っています。
+        </p>
+        
+        <div class="tech-stack">
+            <div class="tech-tag">HTML/CSS</div>
+            <div class="tech-tag">JavaScript</div>
+            <div class="tech-tag">TypeScript</div>
+            <div class="tech-tag">React</div>
+            <div class="tech-tag">Next.js</div>
+            <div class="tech-tag">Node.js</div>
+            <div class="tech-tag">Tailwind CSS</div>
         </div>
     </section>
-    
+
     <!-- About セクション -->
-    <section id="about" class="py-20 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                    <span class="gradient-primary">About</span>
-                </h2>
-                <p class="text-gray-400">私について</p>
-            </div>
+    <section class="about" id="about">
+        <div class="section-container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">私について</p>
             
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <h3 class="text-2xl md:text-3xl font-bold mb-6">
-                        こんにちは、<br>
-                        <span class="gradient-accent">とんこつらーめん</span>です
-                    </h3>
-                    <p class="text-gray-300 leading-relaxed mb-6">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>こんにちは、<br>とんこつらーめんです</h3>
+                    <p>
                         フロントエンドエンジニアとして、ユーザー体験を重視したWebサイト制作を行っています。
                         HTML、CSS、JavaScriptを駆使し、モダンなデザインと機能性を両立させた作品を作っています。
                     </p>
+                    <p>
+                        格安で美しいWebサイト制作を心がけており、クライアントのニーズに合わせた
+                        最適なソリューションを提供します。レスポンシブデザインからパフォーマンス最適化まで、
+                        幅広い技術領域をカバーしています。
+                    </p>
                 </div>
-                <div class="relative" data-aos="fade-left">
-                    <div class="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-2xl">
-                        <h4 class="text-xl font-bold mb-4">Skills</h4>
-                        <div class="space-y-4">
-                            <div>
-                                <span class="text-sm text-gray-400">HTML/CSS</span>
-                            </div>
-                            <div>
-                                <span class="text-sm text-gray-400">JavaScript</span>
-                            </div>
-                            <div>
-                                <span class="text-sm text-gray-400">TypeScript</span>
-                            </div>
-                            <div>
-                                <span class="text-sm text-gray-400">React/Next.js</span>
-                            </div>
+                
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">開発時間</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">技術スタック</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">高速</div>
+                        <div class="stat-label">開発スピード</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">レスポンシブ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロジェクトセクション -->
+    <section class="projects" id="projects">
+        <div class="section-container">
+            <h2 class="section-title">Portfolio</h2>
+            <p class="section-subtitle">制作サンプルをご紹介</p>
+            
+            <div class="project-grid">
+                <!-- 実際のプロジェクト -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800" alt="和食レストラン">
+                        <span class="project-badge">Restaurant</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">炙り家 嵐山</h3>
+                        <p class="project-description">
+                            京都の和食レストランサイト。高級感のあるデザインとスムーズなアニメーションが特徴。開発時間は約2時間。
+                        </p>
+                        <div class="project-tech">
+                            <span class="project-tech-tag">HTML/CSS</span>
+                            <span class="project-tech-tag">JavaScript</span>
+                            <span class="project-tech-tag">レスポンシブ</span>
+                        </div>
+                        <a href="teishoku.html" target="_blank" class="project-link">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coming Soon カード1 -->
+                <div class="coming-soon-card">
+                    <div class="coming-soon-content">
+                        <div class="coming-soon-icon">🚀</div>
+                        <h3>Coming Soon...</h3>
+                        <p>New Sample</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- スキルセクション -->
+    <section class="skills" id="skills">
+        <div class="section-container">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-subtitle">技術スタック</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>HTML / CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>React / Next.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Styling</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>Tailwind CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>Sass / SCSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>CSS Modules</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>Styled Components</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>Git / GitHub</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>Claude</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-dot"></span>
+                            <span>レスポンシブデザイン</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Portfolio セクション -->
-    <section id="portfolio" class="py-20 bg-gray-800">
-        <div class="container mx-auto max-w-6xl px-4">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                    <span class="gradient-accent">Portfolio</span>
-                </h2>
-                <p class="text-gray-400">制作サンプルをご紹介</p>
-            </div>
+
+    <!-- コンタクトセクション -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">お気軽にお問い合わせください</p>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- サンプル1: 和食レストラン -->
-                <div class="bg-gray-900 rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800" 
-                             alt="和食レストランサイト" 
-                             class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="bg-yellow-600/80 text-white px-3 py-1 rounded-full text-sm">Restaurant</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">炙り家 嵐山</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            京都の和食レストランサイト。高級感のあるデザインとスムーズなアニメーションが特徴。開発時間は約2時間。
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex space-x-2">
-                                <span class="text-xs bg-blue-600/20 text-blue-400 px-2 py-1 rounded">HTML/CSS</span>
-                                <span class="text-xs bg-green-600/20 text-green-400 px-2 py-1 rounded">JavaScript</span>
-                            </div>
-                            <div class="flex space-x-2">
-                                <a href="teishoku.html" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 今後追加予定のカード -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border-2 border-dashed border-gray-600 flex items-center justify-center h-80 card-hover" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-center">
-                        <i class="fas fa-plus-circle text-4xl text-gray-500 mb-4"></i>
-                        <h3 class="text-lg font-bold text-gray-400 mb-2">Coming Soon</h3>
-                        <p class="text-gray-500 text-sm">新しいプロジェクト<br>準備中...</p>
-                    </div>
-                </div>
-            </div>
+            <p style="max-width: 600px; margin: 2rem auto; color: var(--secondary); line-height: 1.8;">
+                新しいプロジェクトのご相談や、Webサイト制作のお見積もりなど、
+                お気軽にご連絡ください。格安で高品質なWebサイトを提供いたします。
+            </p>
             
-            <div class="text-center mt-12" data-aos="fade-up">
-                <p class="text-gray-400 mb-4">より多くの作品は随時追加予定です</p>
-                <a href="https://github.com" class="inline-flex items-center bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-full transition-all">
-                    <i class="fab fa-github mr-2"></i>
-                    GitHub で全ての作品を見る
+            <div class="contact-buttons">
+                <a href="mailto:tonrakun+work@gmail.com" class="contact-btn">
+                    <span>📧</span>
+                    <span>Email</span>
+                </a>
+                <a href="https://github.com/tonrakun" target="_blank" class="contact-btn secondary">
+                    <span>💻</span>
+                    <span>GitHub</span>
                 </a>
             </div>
         </div>
     </section>
-    
+
     <!-- フッター -->
-    <footer class="bg-gray-900 border-t border-gray-700 py-12">
-        <div class="container mx-auto max-w-6xl px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold gradient-primary mb-4">とんこつらーめん</h3>
-                    <p class="text-gray-400 text-sm">
-                        フロントエンド・バックエンドエンジニア<br>
-                        美しいWebサイト制作を手掛けています。<br>
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li>• Webサイト制作</li>
-                        <li>• フロントエンド・バックエンド開発</li>
-                        <li>• UI/UXデザイン</li>
-                        <li>• レスポンシブ対応</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#about" class="hover:text-blue-400 transition-colors">About</a></li>
-                        <li><a href="#portfolio" class="hover:text-blue-400 transition-colors">Portfolio</a></li>
-                        <li><a href="teishoku.html" class="hover:text-blue-400 transition-colors">Sample Work</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
-                <p>&copy; 2024 とんこつらーめん. All rights reserved.</p>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2024 とんこつらーめん. All rights reserved.</p>
     </footer>
-    
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
